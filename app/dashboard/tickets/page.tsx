@@ -9,7 +9,7 @@ const mockTickets: Ticket[] = [
     eventId: "1",
     userId: "user-1",
     ticketTypeId: "tt-2",
-    status: "active",
+    status: "ACTIVE",
     purchaseDate: "2024-12-01T00:00:00Z",
     event: {
       id: "1",
@@ -20,7 +20,7 @@ const mockTickets: Ticket[] = [
       location: "San Francisco, CA",
       imageUrl: "/tech-conference-stage.jpg",
       category: "Technology",
-      status: "published",
+      status: "PUBLISHED",
       featured: true,
       organizerId: "org-1",
       createdAt: "2024-11-01T00:00:00Z",
