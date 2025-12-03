@@ -7,6 +7,16 @@ import { EventMetrics } from "@/components/admin/analytics/EventMetrics";
 import { RealTimeStats } from "@/components/admin/analytics/RealTimeStats";
 import { Button } from "@/components/ui/button";
 import { Download, RefreshCw } from "lucide-react";
+import { RevenueTrendChart } from "@/components/analytics/charts/RevenueTrendChart";
+import { TicketSalesChart } from "@/components/analytics/charts/TicketSalesChart";
+import { UserEngagementChart } from "@/components/analytics/charts/UserEngagementChart";
+import { EventPerformanceChart } from "@/components/analytics/charts/EventPerformanceChart";
+import { FinancialReportTable } from "@/components/analytics/tables/FinancialReportTable";
+import { EventAnalyticsTable } from "@/components/analytics/tables/EventAnalyticsTable";
+import { UserBehaviorTable } from "@/components/analytics/tables/UserBehaviorTable";
+import { MultiDimensionFilter } from "@/components/analytics/filters/MultiDimensionFilter";
+import { UserSegmentationTool } from "@/components/analytics/filters/UserSegmentationTool";
+import { CohortAnalysis } from "@/components/analytics/filters/CohortAnalysis";
 
 export default function AdminAnalyticsPage() {
   return (
@@ -31,28 +41,48 @@ export default function AdminAnalyticsPage() {
 
       {/* Analytics Tabs */}
       <Tabs defaultValue="overview" className="w-full">
-        <TabsList>
+        <TabsList className="grid w-full grid-cols-7">
           <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="revenue">Revenue</TabsTrigger>
-          <TabsTrigger value="users">Users</TabsTrigger>
-          <TabsTrigger value="events">Events</TabsTrigger>
+          <TabsTrigger value="charts">Advanced Charts</TabsTrigger>
+          <TabsTrigger value="tables">Data Tables</TabsTrigger>
+          <TabsTrigger value="filters">Filters</TabsTrigger>
+          <TabsTrigger value="segments">Segments</TabsTrigger>
+          <TabsTrigger value="cohorts">Cohorts</TabsTrigger>
           <TabsTrigger value="realtime">Real-Time</TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview" className="space-y-6 mt-6">
           <RealTimeStats />
-        </TabsContent>
-
-        <TabsContent value="revenue" className="mt-6">
-          <RevenueAnalytics />
-        </TabsContent>
-
-        <TabsContent value="users" className="mt-6">
-          <UserGrowthChart />
-        </TabsContent>
-
-        <TabsContent value="events" className="mt-6">
+          <div className="grid gap-6 md:grid-cols-2">
+            <RevenueAnalytics />
+            <UserGrowthChart />
+          </div>
           <EventMetrics />
+        </TabsContent>
+
+        <TabsContent value="charts" className="space-y-6 mt-6">
+          <RevenueTrendChart />
+          <TicketSalesChart />
+          <UserEngagementChart />
+          <EventPerformanceChart />
+        </TabsContent>
+
+        <TabsContent value="tables" className="space-y-6 mt-6">
+          <FinancialReportTable />
+          <EventAnalyticsTable />
+          <UserBehaviorTable />
+        </TabsContent>
+
+        <TabsContent value="filters" className="mt-6">
+          <MultiDimensionFilter />
+        </TabsContent>
+
+        <TabsContent value="segments" className="mt-6">
+          <UserSegmentationTool />
+        </TabsContent>
+
+        <TabsContent value="cohorts" className="mt-6">
+          <CohortAnalysis />
         </TabsContent>
 
         <TabsContent value="realtime" className="mt-6">
