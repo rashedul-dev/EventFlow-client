@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-12-03T17:37:51.421Z",
+  "configuration": {
+    "webpack5": true,
+    "swcMinification": true,
+    "productionMode": true
+  },
+  "recommendations": [
+    "Use named exports",
+    "Avoid barrel exports",
+    "Use tree-shakeable libraries",
+    "Import specific functions",
+    "Mark side effects properly"
+  ],
+  "treeShakeablePackages": [
+    "lodash-es",
+    "date-fns",
+    "lucide-react",
+    "recharts"
+  ],
+  "sideEffectPackages": [
+    "react",
+    "react-dom",
+    "next"
+  ]
+}

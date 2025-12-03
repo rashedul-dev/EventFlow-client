@@ -6,7 +6,15 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
-    "start": "next start"
+    "start": "next start",
+    "analyze": "ANALYZE=true next build",
+    "analyze:bundle": "node scripts/optimization/analyze-bundle.js",
+    "check:deps": "node scripts/optimization/dependency-check.js",
+    "check:css": "node scripts/optimization/remove-unused-css.js",
+    "check:tree-shaking": "node scripts/optimization/tree-shaking-config.js",
+    "optimize": "npm run check:deps && npm run check:css && npm run check:tree-shaking",
+    "perf:lighthouse": "echo 'Run Lighthouse audit in Chrome DevTools' && echo 'Or use: npx lighthouse http://localhost:3000'",
+    "perf:report": "npm run analyze:bundle && npm run optimize"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -72,6 +80,7 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "baseline-browser-mapping": "^2.9.0",
     "postcss": "^8.5",
     "tailwindcss": "^4.1.9",
     "tw-animate-css": "1.3.3",

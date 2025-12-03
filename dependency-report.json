@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-12-03T17:37:50.178Z",
+  "recommendations": [
+    "Use dynamic imports for heavy components",
+    "Consider lighter alternatives where applicable",
+    "Regularly run npm audit for security updates",
+    "Remove unused dependencies with depcheck",
+    "Update outdated packages carefully"
+  ],
+  "heavyDependencies": [
+    "recharts",
+    "@tanstack/react-table",
+    "date-fns",
+    "zod"
+  ],
+  "lighterAlternatives": {
+    "moment": "date-fns (86% smaller)",
+    "lodash": "lodash-es (tree-shakeable)",
+    "axios": "native fetch API",
+    "react-select": "@headlessui/react"
+  }
+}
