@@ -131,7 +131,7 @@ export function WaitlistManager({ eventId, isOrganizer = false }: WaitlistManage
           </div>
 
           <div className="flex items-start gap-3 p-4 rounded-lg bg-primary/5 border border-primary/20">
-            <Bell className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+            <Bell className="h-5 w-5 text-primary shrink-0 mt-0.5" />
             <div>
               <p className="text-sm font-medium text-foreground mb-1">Stay Alert</p>
               <p className="text-xs text-muted-foreground">

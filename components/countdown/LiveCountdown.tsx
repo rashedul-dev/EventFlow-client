@@ -155,7 +155,7 @@ export function LiveCountdown({
     <Card className="p-6 bg-card border-border overflow-hidden relative">
       {/* Animated background effect for starting soon */}
       {isStartingSoon && !hasStarted && (
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 animate-pulse" />
+        <div className="absolute inset-0 bg-linear-to-r from-primary/5 via-primary/10 to-primary/5 animate-pulse" />
       )}
 
       <div className="relative space-y-6">

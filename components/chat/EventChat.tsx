@@ -132,7 +132,7 @@ export function EventChat({ chatId, type = "support", currentUserId }: EventChat
                 <div key={message.id} className={cn("flex gap-3", isCurrentUser ? "flex-row-reverse" : "flex-row")}>
                   {/* Avatar */}
                   {!isCurrentUser && (
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <div
                         className={cn(
                           "w-8 h-8 rounded-full flex items-center justify-center",
@@ -176,7 +176,7 @@ export function EventChat({ chatId, type = "support", currentUserId }: EventChat
                           : "bg-muted text-foreground rounded-bl-sm"
                       )}
                     >
-                      <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
+                      <p className="text-sm whitespace-pre-wrap wrap-break-word">{message.content}</p>
                     </div>
                   </div>
                 </div>

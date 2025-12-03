@@ -136,7 +136,7 @@ export function SeatMap({ eventId, onSeatsSelected, maxSelection = 10 }: SeatMap
 
       {/* Stage */}
       <div className="relative">
-        <div className="w-full h-16 bg-gradient-to-b from-[#253900] to-[#253900]/50 rounded-t-2xl flex items-center justify-center">
+        <div className="w-full h-16 bg-linear-to-b from-[#253900] to-[#253900]/50 rounded-t-2xl flex items-center justify-center">
           <span className="text-foreground font-semibold text-lg">STAGE</span>
         </div>
       </div>

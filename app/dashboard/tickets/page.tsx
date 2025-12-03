@@ -55,7 +55,7 @@ const mockTickets: Ticket[] = [
     },
   },
   {
-    id: "tkt-001",
+    id: "tkt-002",
     ticketNumber: "TN-123456",
     ticketTypeId: "tt-789",
     eventId: "evt-123",
@@ -105,7 +105,7 @@ const mockTickets: Ticket[] = [
     },
   },
   {
-    id: "tkt-001",
+    id: "tkt-003",
     ticketNumber: "TN-123456",
     ticketTypeId: "tt-789",
     eventId: "evt-123",
