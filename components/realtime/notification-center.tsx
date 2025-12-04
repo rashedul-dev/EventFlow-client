@@ -186,7 +186,7 @@ export function NotificationCenter({ className }: NotificationCenterProps) {
                               {notification.title}
                             </h4>
                             {notification.status !== "READ" && (
-                              <span className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-1.5" />
+                              <span className="w-2 h-2 rounded-full bg-primary shrink-0 mt-1.5" />
                             )}
                           </div>
                           <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{notification.message}</p>

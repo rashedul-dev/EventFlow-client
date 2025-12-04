@@ -1,0 +1,420 @@
+/**
+ * Global Print Styles
+ * 
+ * Optimizes print output for:
+ * - Event tickets with QR codes
+ * - Analytics reports
+ * - Invoices and receipts
+ * - General content printing
+ */
+
+@media print {
+  /* ==========================================
+   * RESET & BASE STYLES
+   * ========================================== */
+
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* ==========================================
+   * PAGE SETUP
+   * ========================================== */
+
+  @page {
+    margin: 1.5cm;
+    size: auto;
+  }
+
+  @page :first {
+    margin-top: 2cm;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    font-family: "Times New Roman", serif;
+  }
+
+  /* ==========================================
+   * HIDE NON-PRINTABLE ELEMENTS
+   * ========================================== */
+
+  nav,
+  header,
+  footer,
+  aside,
+  .no-print,
+  .nav,
+  .navigation,
+  .sidebar,
+  .menu,
+  button:not(.print-button),
+  .button:not(.print-button),
+  video,
+  audio,
+  iframe,
+  .advertisement,
+  .social-share,
+  .comments,
+  form:not(.print-form) {
+    display: none !important;
+  }
+
+  /* ==========================================
+   * TYPOGRAPHY
+   * ========================================== */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    font-weight: bold;
+    color: #000 !important;
+  }
+
+  h1 {
+    font-size: 24pt;
+    margin-bottom: 12pt;
+  }
+
+  h2 {
+    font-size: 18pt;
+    margin-bottom: 10pt;
+  }
+
+  h3 {
+    font-size: 14pt;
+    margin-bottom: 8pt;
+  }
+
+  p,
+  ul,
+  ol {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* ==========================================
+   * LINKS
+   * ========================================== */
+
+  a {
+    text-decoration: underline;
+    color: #000 !important;
+  }
+
+  /* Print URLs after links */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 90%;
+    font-style: italic;
+  }
+
+  /* Don't print URLs for internal links */
+  a[href^="#"]::after,
+  a[href^="/"]::after {
+    content: "";
+  }
+
+  /* ==========================================
+   * IMAGES
+   * ========================================== */
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* QR Codes - High resolution */
+  .qr-code,
+  [class*="qr"] {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  /* ==========================================
+   * TABLES
+   * ========================================== */
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
+
+  th,
+  td {
+    border: 1px solid #000;
+    padding: 8pt;
+    text-align: left;
+  }
+
+  th {
+    font-weight: bold;
+    background: #f0f0f0 !important;
+  }
+
+  /* ==========================================
+   * PAGE BREAKS
+   * ========================================== */
+
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .page-break-avoid {
+    page-break-inside: avoid;
+  }
+
+  /* ==========================================
+   * TICKETS
+   * ========================================== */
+
+  .ticket,
+  .event-ticket {
+    page-break-inside: avoid;
+    page-break-after: always;
+    border: 2px solid #000 !important;
+    padding: 20pt;
+    margin-bottom: 20pt;
+  }
+
+  .ticket:last-child {
+    page-break-after: avoid;
+  }
+
+  .ticket-header {
+    border-bottom: 2px dashed #000;
+    padding-bottom: 12pt;
+    margin-bottom: 12pt;
+  }
+
+  .ticket-qr {
+    page-break-inside: avoid;
+    text-align: center;
+    margin: 16pt 0;
+  }
+
+  .ticket-barcode {
+    page-break-inside: avoid;
+    margin: 16pt 0;
+  }
+
+  /* Security features for tickets */
+  .ticket-watermark {
+    opacity: 0.1 !important;
+    position: absolute;
+    font-size: 72pt;
+    transform: rotate(-45deg);
+    pointer-events: none;
+  }
+
+  /* ==========================================
+   * REPORTS & ANALYTICS
+   * ========================================== */
+
+  .report {
+    page-break-after: always;
+  }
+
+  .report:last-child {
+    page-break-after: avoid;
+  }
+
+  .report-header {
+    border-bottom: 3px solid #000;
+    padding-bottom: 12pt;
+    margin-bottom: 16pt;
+  }
+
+  .report-section {
+    margin-bottom: 20pt;
+    page-break-inside: avoid;
+  }
+
+  /* Charts become tables in print */
+  .chart,
+  [class*="chart"] {
+    page-break-inside: avoid;
+  }
+
+  .chart-legend {
+    border: 1px solid #000;
+    padding: 8pt;
+    margin-top: 8pt;
+  }
+
+  /* ==========================================
+   * INVOICES & RECEIPTS
+   * ========================================== */
+
+  .invoice,
+  .receipt {
+    page-break-inside: avoid;
+  }
+
+  .invoice-header,
+  .receipt-header {
+    border-bottom: 2px solid #000;
+    padding-bottom: 12pt;
+    margin-bottom: 16pt;
+  }
+
+  .invoice-total,
+  .receipt-total {
+    border-top: 2px solid #000;
+    border-bottom: 3px double #000;
+    padding: 12pt 0;
+    margin-top: 16pt;
+    font-weight: bold;
+    font-size: 14pt;
+  }
+
+  /* ==========================================
+   * LISTS
+   * ========================================== */
+
+  ul,
+  ol {
+    page-break-inside: avoid;
+  }
+
+  li {
+    page-break-inside: avoid;
+  }
+
+  /* ==========================================
+   * CODE BLOCKS
+   * ========================================== */
+
+  pre,
+  code {
+    border: 1px solid #000;
+    padding: 8pt;
+    font-family: "Courier New", monospace;
+    font-size: 10pt;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* ==========================================
+   * UTILITIES
+   * ========================================== */
+
+  .print-only {
+    display: block !important;
+  }
+
+  .screen-only {
+    display: none !important;
+  }
+
+  /* Ensure background colors print for important elements */
+  .print-background {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  /* ==========================================
+   * LANDSCAPE MODE
+   * ========================================== */
+
+  @page landscape {
+    size: landscape;
+  }
+
+  .print-landscape {
+    page: landscape;
+  }
+
+  /* ==========================================
+   * HEADER & FOOTER FOR PAGES
+   * ========================================== */
+
+  @page {
+    @top-right {
+      content: counter(page) " of " counter(pages);
+      font-size: 10pt;
+    }
+
+    @bottom-left {
+      content: "Printed: " string(print-date);
+      font-size: 9pt;
+      color: #666;
+    }
+  }
+
+  /* ==========================================
+   * COLOR OPTIMIZATION
+   * ========================================== */
+
+  /* Convert colors to grayscale for black & white printing */
+  @media print and (monochrome) {
+    * {
+      filter: grayscale(100%);
+    }
+  }
+
+  /* ==========================================
+   * ACCESSIBILITY IN PRINT
+   * ========================================== */
+
+  /* Ensure focus indicators are visible in print */
+  [aria-current]::before {
+    content: "➜ ";
+    font-weight: bold;
+  }
+
+  /* Print ARIA labels */
+  [aria-label]::after {
+    content: " [" attr(aria-label) "]";
+    font-size: 90%;
+    font-style: italic;
+    color: #666 !important;
+  }
+}
+
+/* ==========================================
+ * PRINT PREVIEW STYLES (Screen)
+ * ========================================== */
+
+.print-preview {
+  max-width: 21cm;
+  margin: 0 auto;
+  padding: 2cm;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.print-preview-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 10;
+}
