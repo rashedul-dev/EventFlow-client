@@ -1,21 +1,22 @@
-import type React from "react"
-import type { Metadata, Viewport } from "next"
-import { Inter, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import { BrandedToaster } from "@/components/ui/branded-toast"
-import { QueryProvider } from "@/lib/api/query-client"
-import { SupportChat } from "@/components/realtime/support-chat"
-import "./globals.css"
+import type React from "react";
+import type { Metadata, Viewport } from "next";
+import { Inter, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { BrandedToaster } from "@/components/ui/branded-toast";
+import { QueryProvider } from "@/lib/api/query-client";
+import { SupportChat } from "@/components/realtime/support-chat";
+import "./globals.css";
+import { GlobalErrorBoundary } from "@/lib/error";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-})
+});
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
-})
+});
 
 export const metadata: Metadata = {
   title: "EventFlow | Modern Event Management Platform",
@@ -36,30 +37,30 @@ export const metadata: Metadata = {
     title: "EventFlow | Modern Event Management Platform",
     description: "Create, discover, and manage unforgettable events.",
   },
-    generator: 'v0.app'
-}
+  generator: "v0.app",
+};
 
 export const viewport: Viewport = {
   themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} ${geistMono.variable} font-sans antialiased min-h-screen bg-background`}>
         <QueryProvider>
-          {children}
+          <GlobalErrorBoundary>{children}</GlobalErrorBoundary>
           <BrandedToaster />
           <SupportChat />
         </QueryProvider>
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
